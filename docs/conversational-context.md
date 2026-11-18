@@ -106,7 +106,7 @@ A ação `experience.options` acompanha toda lista e é montada só com IDs do c
 
 ## 3. Casos testados
 
-O arquivo `src/chat/chat-conversations.integration.spec.ts` roda o pipeline real, com o Registry real aplicando os filtros. Ollama, snapshot, banco interno e ChromaDB são simulados, e o classificador por modelo fica indisponível, para provar que as regras bastam. Todas as conversas usam o mesmo `conversationId` do início ao fim.
+O arquivo `test/integration/chat-conversations.integration.spec.ts` roda o pipeline real, com o Registry real aplicando os filtros. Ollama, snapshot, banco interno e ChromaDB são simulados, e o classificador por modelo fica indisponível, para provar que as regras bastam. Todas as conversas usam o mesmo `conversationId` do início ao fim.
 
 | Conversa | Verifica |
 | --- | --- |

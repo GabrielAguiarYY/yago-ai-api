@@ -4,10 +4,10 @@ import { Test } from '@nestjs/testing';
 import { getDataSourceToken } from '@nestjs/typeorm';
 import type { DataSource } from 'typeorm';
 
-import { InMemoryChatStore } from '../../test/support/in-memory-chat-store.js';
-import { requestProviders, type RequestFakes } from '../../test/support/request-fixtures.js';
-import { installFetchMock, jsonResponse, ollamaChat, parseBody } from '../../test/support/ollama-fakes.js';
-import type { FetchMock } from '../../test/support/ollama-fakes.js';
+import { InMemoryChatStore } from '../support/in-memory-chat-store.js';
+import { requestProviders, type RequestFakes } from '../support/request-fixtures.js';
+import { installFetchMock, jsonResponse, ollamaChat, parseBody } from '../support/ollama-fakes.js';
+import type { FetchMock } from '../support/ollama-fakes.js';
 import {
   isValidChatAction,
   type ChatAction,
@@ -21,37 +21,37 @@ import {
   type MenuViewAction,
   type NavigateAction,
   type RequestListAction,
-} from '../contracts/chat-actions.js';
-import { ExperienceAvailabilityService } from '../experiences/experience-availability.service.js';
-import { ExperienceBookingService } from '../experiences/experience-booking.service.js';
-import { quoteExperience } from '../experiences/experience-pricing.js';
-import { ExperiencesCatalogService } from '../experiences/experiences-catalog.service.js';
-import type { ExperienceInfo, ExperienceSlot } from '../experiences/experience.types.js';
-import type { GuestContext } from '../guest/guest-context.js';
-import { OllamaService } from '../llm/ollama.service.js';
-import { ExperienceOperationsService } from '../operations/experience-operations.service.js';
-import { OperationsAiService } from '../operations/operations-ai.service.js';
-import { OperationsDispatcherService } from '../operations/operations-dispatcher.service.js';
-import { OperationsToolRegistryService } from '../operations/operations-tool-registry.service.js';
-import { RequestsOperationsService } from '../operations/requests-operations.service.js';
-import { RequestsService } from '../operations/requests.service.js';
-import { ReservationsService } from '../operations/reservations.service.js';
-import { EventOperationsService } from '../operations/event-operations.service.js';
-import { RestaurantOperationsService } from '../operations/restaurant-operations.service.js';
-import { EmbeddingsService } from '../rag/embeddings.service.js';
-import { KnowledgeService } from '../rag/knowledge.service.js';
-import { RetrievalService } from '../rag/retrieval.service.js';
-import { GuestStayService } from '../resort/guest-stay.service.js';
-import { ResortSnapshotGateway } from '../resort/resort-snapshot.gateway.js';
-import { EventsCatalogService, type ResortEvent } from '../resort/events-catalog.service.js';
-import { RestaurantsCatalogService } from '../resort/restaurants-catalog.service.js';
+} from '../../src/contracts/chat-actions.js';
+import { ExperienceAvailabilityService } from '../../src/experiences/experience-availability.service.js';
+import { ExperienceBookingService } from '../../src/experiences/experience-booking.service.js';
+import { quoteExperience } from '../../src/experiences/experience-pricing.js';
+import { ExperiencesCatalogService } from '../../src/experiences/experiences-catalog.service.js';
+import type { ExperienceInfo, ExperienceSlot } from '../../src/experiences/experience.types.js';
+import type { GuestContext } from '../../src/guest/guest-context.js';
+import { OllamaService } from '../../src/llm/ollama.service.js';
+import { ExperienceOperationsService } from '../../src/operations/experience-operations.service.js';
+import { OperationsAiService } from '../../src/operations/operations-ai.service.js';
+import { OperationsDispatcherService } from '../../src/operations/operations-dispatcher.service.js';
+import { OperationsToolRegistryService } from '../../src/operations/operations-tool-registry.service.js';
+import { RequestsOperationsService } from '../../src/operations/requests-operations.service.js';
+import { RequestsService } from '../../src/operations/requests.service.js';
+import { ReservationsService } from '../../src/operations/reservations.service.js';
+import { EventOperationsService } from '../../src/operations/event-operations.service.js';
+import { RestaurantOperationsService } from '../../src/operations/restaurant-operations.service.js';
+import { EmbeddingsService } from '../../src/rag/embeddings.service.js';
+import { KnowledgeService } from '../../src/rag/knowledge.service.js';
+import { RetrievalService } from '../../src/rag/retrieval.service.js';
+import { GuestStayService } from '../../src/resort/guest-stay.service.js';
+import { ResortSnapshotGateway } from '../../src/resort/resort-snapshot.gateway.js';
+import { EventsCatalogService, type ResortEvent } from '../../src/resort/events-catalog.service.js';
+import { RestaurantsCatalogService } from '../../src/resort/restaurants-catalog.service.js';
 
-import { ChatActionsService } from './chat-actions.service.js';
-import { ChatOrchestratorService } from './chat-orchestrator.service.js';
-import { ConversationContextService } from './conversation-context.service.js';
-import { EXTERNAL_REPLY } from './social-replies.js';
-import { ChatService } from './chat.service.js';
-import { IntentClassifierService } from './intent-classifier.service.js';
+import { ChatActionsService } from '../../src/chat/chat-actions.service.js';
+import { ChatOrchestratorService } from '../../src/chat/chat-orchestrator.service.js';
+import { ConversationContextService } from '../../src/chat/conversation-context.service.js';
+import { EXTERNAL_REPLY } from '../../src/chat/social-replies.js';
+import { ChatService } from '../../src/chat/chat.service.js';
+import { IntentClassifierService } from '../../src/chat/intent-classifier.service.js';
 
 const GUEST: GuestContext = { resortId: 'demo', guestId: '0a0b0c0d-1111-4222-8333-444455556666' };
 const OTHER_GUEST: GuestContext = { resortId: 'demo', guestId: '0f0e0d0c-9999-4888-8777-666655554444' };
